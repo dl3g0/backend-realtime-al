@@ -8,10 +8,12 @@ import {
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 
-@WebSocketGateway({
+@WebSocketGateway(80, {
   cors: { origin: '*' },
 })
-export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect{
+export class ChatGateway
+  implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
+{
   @WebSocketServer() server: Server;
 
   afterInit(server: any) {
@@ -19,11 +21,11 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
   }
 
   handleConnection(client: any, ...args: any[]) {
-    console.log('Hola alguien se conecto al socket 👌👌👌');
+    console.log('Hola alguien se conecto al socket');
   }
 
   handleDisconnect(client: any) {
-    console.log('ALguien se fue! chao chao')
+    console.log('ALguien se fue')
   }
 
   @SubscribeMessage('event_join')
@@ -41,7 +43,7 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
 
   @SubscribeMessage('event_leave')
   handleRoomLeave(client: Socket, room:string) {
-    console.log(`te desconectaste de la sala :)`)
+    console.log(`te desconectaste de la sala`)
     client.leave(`room_${room}`);
   }
 }

@@ -17,10 +17,10 @@ let ChatGateway = class ChatGateway {
         console.log('Esto se ejecuta cuando inicia');
     }
     handleConnection(client, ...args) {
-        console.log('Hola alguien se conecto al socket 👌👌👌');
+        console.log('Hola alguien se conecto al socket');
     }
     handleDisconnect(client) {
-        console.log('ALguien se fue! chao chao');
+        console.log('ALguien se fue');
     }
     handleJoinRoom(client, room) {
         console.log(`te conectaste a la sala "${room}" `);
@@ -32,7 +32,7 @@ let ChatGateway = class ChatGateway {
         this.server.to(`room_${room}`).emit('new_message', payload);
     }
     handleRoomLeave(client, room) {
-        console.log(`te desconectaste de la sala :)`);
+        console.log(`te desconectaste de la sala`);
         client.leave(`room_${room}`);
     }
 };
@@ -59,7 +59,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ChatGateway.prototype, "handleRoomLeave", null);
 ChatGateway = __decorate([
-    (0, websockets_1.WebSocketGateway)(81, {
+    (0, websockets_1.WebSocketGateway)(80, {
         cors: { origin: '*' },
     })
 ], ChatGateway);

@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   OnGatewayConnection,
   OnGatewayDisconnect,
@@ -9,6 +11,7 @@ import {
 import { Server, Socket } from 'socket.io';
 
 @WebSocketGateway({
+  // eslint-disable-next-line prettier/prettier
   cors: { origin: '*'},
 })
 export class ChatGateway
